@@ -1,12 +1,12 @@
 1 - Using the command line, how do you:
-    - change directories?
-    - list the contents of a folder?
-    - print the path of the current directory?
-    - move a file from one location to the another?
-    - copy a file from one location to another?
-    - create a file?
-    - create a folder?
-    - delete a file?
-    - delete a folder?
-    - print the contents of a file?
-    - edit the contents of a file?
+    - change directories? "cd"
+    - list the contents of a folder? "ls"
+    - print the path of the current directory? "pwd"
+    - move a file from one location to the another? "mv"
+    - copy a file from one location to another? "cp"
+    - create a file? "touch"
+    - create a folder? "mkdir"
+    - delete a file? "rm"
+    - delete a folder? "rm -r"
+    - print the contents of a file? "cat"
+    - edit the contents of a file? "vi" or use redirection ie. ">" or ">>"

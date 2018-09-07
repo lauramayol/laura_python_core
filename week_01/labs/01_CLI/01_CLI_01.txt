@@ -3,27 +3,115 @@
 Perform the following tasks using the CLI and copy and paste the commands and results below.
 
 - Navigate to your home directory
+
+Lauras-MacBook-Air:~ lauramay$ cd
+Lauras-MacBook-Air:~ lauramay$ pwd
+/Users/lauramay
+
 - Create a new directory called CodingNomads. We will use this folder to house materials for the course.
+Lauras-MacBook-Air:~ lauramay$ mkdir CodingNomads
+
 - Move into the CodingNomads folder
+
+
+Lauras-MacBook-Air:~ lauramay$ cd CodingNomads
+
 - Create new folder cli_testing
+
+Lauras-MacBook-Air:CodingNomads lauramay$ mkdir cli_testing
+
 - Inside of folder cli_testing,
+
+Lauras-MacBook-Air:CodingNomads lauramay$ cd cli_testing
+
     a. print the directory path
+
+
+Lauras-MacBook-Air:cli_testing lauramay$ pwd
+/Users/lauramay/CodingNomads/cli_testing
+
     b. create 3 new .txt files all with different names (file1.txt, file2.txt, file3.txt)
+
+
+Lauras-MacBook-Air:cli_testing lauramay$ touch file1.txt file2.txt file3.txt
+
     c. list the contents of the folder
+
+Lauras-MacBook-Air:cli_testing lauramay$ ls
+file1.txt   file2.txt   file3.txt
+
+
     d. rename one of the files
+
+    Lauras-MacBook-Air:cli_testing lauramay$ mv file1.txt file123.txt
+
 - Inside of folder cli_testing, create a new folder
+
+Lauras-MacBook-Air:cli_testing lauramay$ mkdir new_folder
+
 - Copy a file from cli_testing to the new folder
+
+
+Lauras-MacBook-Air:cli_testing lauramay$ cp file3.txt new_folder
+
 - Move a different file from cli_testing to the new folder
+
+
+Lauras-MacBook-Air:cli_testing lauramay$ mv file2.txt new_folder
+
 - Demonstrate removing:
     a. A file
+
+Lauras-MacBook-Air:cli_testing lauramay$ rm new_folder/file3.txt
     b. A folder
+
+Lauras-MacBook-Air:cli_testing lauramay$ rm new_folder/file2.txt
+Lauras-MacBook-Air:cli_testing lauramay$ rm -r new_folder
 
 ## vim
     a. Use $ vim to write some text inside a file
+
+Lauras-MacBook-Air:cli_testing lauramay$ vi file123.txt
+
     b. Use $ cat print contents of file
+
+Lauras-MacBook-Air:cli_testing lauramay$ cat file123.txt
+I am almost done with week 1 work, yay!!
+
     c. Use $ grep to search for a word inside file
+
+Lauras-MacBook-Air:cli_testing lauramay$ egrep '!' file123.txt
+I am almost done with week 1 work, yay!!
 
 ## explore advanced CLI
 - What is the difference between the two commands > and >>?
+
+Lauras-MacBook-Air:cli_testing lauramay$ ls > file123.txt
+Lauras-MacBook-Air:cli_testing lauramay$ cat file123.txt
+file123.txt
+file3.txt
+Lauras-MacBook-Air:cli_testing lauramay$ echo 'This text will append' >> file123.txt
+Lauras-MacBook-Air:cli_testing lauramay$ cat file123.txt
+file123.txt
+file3.txt
+This text will append
+
 - Append the text "how?!" of hello.txt to my_file.txt
+
+Lauras-MacBook-Air:cli_testing lauramay$ touch hello.txt my_file.txt
+Lauras-MacBook-Air:cli_testing lauramay$ echo 'how?!' > hello.txt
+Lauras-MacBook-Air:cli_testing lauramay$
+Lauras-MacBook-Air:cli_testing lauramay$ cat hello.txt
+how?!
+Lauras-MacBook-Air:cli_testing lauramay$ cat hello.txt  >> my_file.txt
+Lauras-MacBook-Air:cli_testing lauramay$ cat hello.txt
+how?!
+Lauras-MacBook-Air:cli_testing lauramay$ cat my_file.txt
+how?!
+
 - Overwrite the content of my_file.txt with "tell me"
+
+
+Lauras-MacBook-Air:cli_testing lauramay$ echo 'tell me' > my_file.txt
+Lauras-MacBook-Air:cli_testing lauramay$ cat my_file.txt
+tell me
