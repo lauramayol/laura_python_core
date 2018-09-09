@@ -13,3 +13,17 @@ The output should look something like this:
 	10|20|30|40|50|60|70|80|90|100|
 
 '''
+y = 1
+
+while y <= 10:
+    x = 1
+    mult_table = ""
+    while x <= 10:
+        if x * y < 10 or (x == 10 and x * y < 100):
+            delimeter = " |"
+        else:
+            delimeter = "|"
+        mult_table = mult_table + str(x * y) + delimeter
+        x += 1
+    y += 1
+    print(mult_table)
