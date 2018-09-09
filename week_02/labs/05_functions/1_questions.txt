@@ -1,50 +1,110 @@
 1 - What is a function?
+    It is a named sequence of statements that I can refer to over and over again.
 
 2 - What does mean to have a function that "takes" a value?
+    It has a parameter that the user specifies when calling the function. I can call the same function several times, each taking a different value, and will get a different result.
 
 3 - What is a return value?
+    The final answer that the function passes back so we can do something with it in the code.
 
 4 - What do type conversion functions do?
+    They convert a value from one type to the other.
 
 5 - What happens if you call the int() function and pass it a string?
+    Error "invalid literal for int()"
 
 6 - What happens if you call the str() function and pass it an int?
+    This is valid because the number now becomes text that is meant to be printed instead of calculated.
 
 7 - How do you import a class to one of your programs?
+    import [name]
 
 8 - How do you use math functions in one of your programs?
+    import math
+    x = math.pi ( this is the dot module)
 
 9 - What is the dot notation?
+    We use a dot "." when we are referring to a function in an imported module.
 
 10 - What is composition?
+    Putting multiple pieces of code into one argument.
 
 11 - Give an example of composition in a function call?
+    x = math.exp(math.log(x+1))
 
 12 - How do you define a function?
+    def [function_name]([optional_paramters]):
 
 13 - Provide the function header of a function named hello_world().
+    def hello_world():
 
 14 - Provide the function header and body of a function named hello_world() that prints out "Hello World" 3 times.
+    def hello_world():
+        print("Hello World")
+        print("Hello World")
+        print("Hello World")
 
 15 - Can functions call other functions?
+    Yes
 
 16 - Complete Exercise 3.1 (p.26) and 3.2 (p.27) from the text book.
 
+    3.1:
+repeat_lyrics()
+
+
+def print_lyrics():
+    print("I'm a lumberjack, and I'm okay.")
+    print("I sleep all night and I work all day.")
+
+
+def repeat_lyrics():
+    print_lyrics()
+    print_lyrics()
+result: NameError: name 'repeat_lyrics' is not defined
+
+    3.2:
+def repeat_lyrics():
+    print_lyrics()
+    print_lyrics()
+
+def print_lyrics():
+    print("I'm a lumberjack, and I'm okay.")
+    print("I sleep all night and I work all day.")
+
+repeat_lyrics()
+
+result (it works!):
+I'm a lumberjack, and I'm okay.
+I sleep all night and I work all day.
+I'm a lumberjack, and I'm okay.
+I sleep all night and I work all day.
+[Finished in 0.1s]
+
 17 - What is the flow of execution?
+    Order in which statements are executed.
 
 18 - Where does a program begin execution?
+    At the first statement of the program.
 
 19 - How does a function call change the flow of of execution?
+    It will go back up to where the function is defined and execute those statements, then come back to where it was called and continue the flow.
 
 20 - Do the rules of composition apply to method parameters as well?
+    Yes, when you pass a parameter to a function, you can compose it with multiple pieces.
 
 21 - Do parameters and variables inside of a function exist outside of the method? Why or why not?
+    No, because they are only defined within the function. Only the return value of the function will exist outside.
 
 22 - How can stack diagrams be useful?
+    To keep track of variables, their values, and where they can be used.
 
 23 - What is the difference between a "fruitful" function and a void function?
+    "fruitful" = returns a value
+    void = performs action but does not return a value
 
 24 - What are some of the reasons we separate our code into functions?
+    Because if we are repeating code we only have one place to mantain. Also it is easier to read and debug each piece separately.
 
 25 - What is the difference between the following two statements?
 	import math
@@ -52,3 +112,4 @@
 	from math import *
 
 	How can you use the functions of the math module in each case?
+    The first statement requires the dot methodology (ie. print(math.pi)), whereas the second statement would import all of the math functions and you would not have to refer back to math (ie. print pi). The first option is usually better because you will keep the "math" reference and will know where the function came from if you are debugging.
