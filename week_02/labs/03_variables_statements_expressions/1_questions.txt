@@ -1,32 +1,48 @@
 1 - What is a value?
-
+    Data that the program uses (ie. "Hello" or 123).
 2 - What is a type?
-
+    The category in which that value belongs to (ie. string, int).
 3 - What are some values we have seen so far?
-
+        "Hello World!" or 123.
 4 - What is an example of a int? A floating-point number? A string?
-
+    int = 10
+    floating = 10.0
+    string = '10'
 5 - What is a variable?
-
+    A name that refers to a value.
 6 - How do you assign the variable x to the value of 10?
-
+    x = 10
 7 - What is an example of an illegal variable name?
-
+    Cannot use a keyword like "return".
 8 - What are keywords and what are they used for?
-
+    Keywords are a set list of words that the compiler already knows and it will know what to do with it without you having to define it.
 9 - What are operators and what are they used for?
-
+    Symbols that we can use to make computations (ie. "+", "/")
 10 - Use the interpretor to demonstrate the use of some of the operators. Give the input and output of addition, multiplication and exponentiation.
-
+>>> 10+1
+11
+>>> 10*2
+20
+>>> 10**3
+1000
+>>>
 11 - What is floor division? How does Python 3 handle floor division?
-
+    Floor division = round down to nearest integer
+    Python 3 uses "//" to do floor division.
 12 - What is the difference between an expression and a statement?
-
+    An expression has a value whereas a statement does not.
 13 - What is the order of operations?
-
+    PEMDAS :D
+    1. P = Parenthesis
+    2. E = Exponent
+    3. M = Multiplication or D = Division
+    4. A = Addition or S = Subtraction
+    Computations with the same presedence are evaluated from left to right.
 14 - What does the + operator do when performed on strings? What does the * operator do when performed on strings? What operators can you not use on strings?
-
+    On strings, "+" concatenates and "*" will copy and paste the value as many times as it was requested to multiply (ie. "Hello*2" = "HelloHello").
+    We cannot use "-" or "/"
 15 - How do you put comments in your code? What are comments used for?
+    Use "#" and it is useful to describe the purpose of the code you are writing.
 
 
 
