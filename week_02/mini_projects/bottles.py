@@ -19,3 +19,34 @@ so to make it a bit harder, here are some rules to follow.
 4) Put a blank line between each verse of the song.
 
 '''
+
+
+def bottles(n):
+    if n > 1:
+        lyric = str(n) + " bottles"
+    elif n == 1:
+        lyric = str(n) + " bottle"
+    else:
+        lyric = "no more bottles"
+    lyric = lyric + " of beer"
+    return lyric
+
+
+def bottles_on_wall(n):
+    lyric2 = bottles(n) + " on the wall"
+    return lyric2
+
+
+nums = 99
+x = nums
+
+
+while x >= 0:
+    print(format(bottles_on_wall(x) + ", " + bottles(x) + "."))
+    x = x - 1
+    if x < 0:
+        last_line = "Go to the store and buy some more, " + bottles_on_wall(nums)
+    else:
+        last_line = "Take one down and pass it around, " + bottles_on_wall(x)
+    print(last_line + ".")
+    print("")
