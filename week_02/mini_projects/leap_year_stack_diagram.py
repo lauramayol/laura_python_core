@@ -38,3 +38,35 @@ http://www.pythontutor.com/visualize.html#mode=edit
 for better visual understanding and support in creating the stack diagram.
 
 '''
+print("Please enter a year to determine if it is a leap year:")
+year_input = int(input())
+
+
+def is_leap_year(y):
+    if y >= 1900 and y <= 10**5:
+        if y % 4 == 0:
+            if y % 100 == 0 and y % 400 > 0:
+                is_leap = False
+            else:
+                is_leap = True
+        else:
+            is_leap = False
+    else:
+        is_leap = None
+        print("Please enter a year from 1900 up to 100,000.")
+    return is_leap
+
+
+print(is_leap_year(year_input))
+
+''' Stack diagram below
+
+              --------------------
+<module>     | year_input -> 2000 |
+              --------------------
+             |     y      -> 2000 |
+ is_leap_year|  is_leap   -> True |
+             |return value -> True|
+              --------------------
+
+'''

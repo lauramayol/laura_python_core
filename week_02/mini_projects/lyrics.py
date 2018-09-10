@@ -10,3 +10,16 @@ interlaced with a repeating chorus.
 - use a for loop for creating the full lyrics
 
 '''
+body = """You wake up, flawless
+Post up, flawless
+Ride round in it, flawless"""
+
+lines = body.split('\n')
+
+chorus = "I woke up like this"
+
+for words in lines:
+    print(words)
+    print(chorus)
+    print(chorus)
+    print(chorus)
