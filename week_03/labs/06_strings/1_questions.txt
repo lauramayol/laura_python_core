@@ -1,6 +1,7 @@
 1 - What is a string?
-
+    a sequence of characters
 2 - What is an index?
+    which character in the string you are referring to
 
 3 - What letter will the following code print? Why?
 
@@ -8,26 +9,52 @@
     index_two = word[2]
     print index_two
 
+    the letter "l"
+
 4 - What is the len() functions used for?
+    To get the length (number of characters) of an object.
 
 5 - How can you get the last character of a word using the len() function?
+    word = "thisismyword"
+print(word[len(word) - 1])
 
 6 - What is string slicing and how does it work?
+    getting a segment of a string by using the start and end index in between brackets [start : end]
+    print(word[3:5])
 
 7 - How to do slice the string "python" to produce the string "thon"?
+    word = "python"
+    print(word[2:])
 
 8 - How can you use slicing to store the first and last character of a word in separate variables?
+word = "python"
+first = word[0]
+last = word[len(word) - 1]
+
 
 9 - What are the answers to Exercise 8.4 (p.80) from the textbook?
+def find(word, letter, start_ind):
+    index = start_ind
+    while index < len(word):
+        if word[index] == letter:
+            return index
+        index = index + 1
+    return -1
 
 10 - Can you change one or more character of a string? Why or why not?
+    No, because strings are immutable.
 
 11 - What is invocation?
+    calling a method
 
 12 - How do you invoke the find() method on the string word with the value 'hello' to find the index of the letter e?
+word = "hello"
+print(word.find("e"))
 
 13 - Complete Exercise 8.5 (p.80) (Caesar cypher) from the textbook.
+
 
 14 - Follow the directions for Exercise 8.1 (p.79) until you feel comfortable with the string methods and what methods are available.
 
 15 - How is the in operator used?
+    It returns a boolean of whether the first string is found in the second string.

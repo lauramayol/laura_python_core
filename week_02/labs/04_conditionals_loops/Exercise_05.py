@@ -7,15 +7,24 @@ Take two numbers from the user, an upper and lower bound. Using a loop, calculat
         The sum is: 5050
         The average is: 50.5
 '''
+print("Enter lower number first: ")
 lower = int(input())
+print("Enter upper number next: ")
 upper = int(input())
 
-sum_to_upper = 0
-avg = (lower + upper) / 2
 
-while lower <= upper:
-    sum_to_upper = sum_to_upper + lower
-    lower += 1
+def calc_sum(l, u):
+    sum_to_upper = 0
+    while l <= u:
+        sum_to_upper = sum_to_upper + l
+        l += 1
+    return str(sum_to_upper)
 
-print ("The sum is: " + str(sum_to_upper))
-print ("The average is: " + str(avg))
+
+def calc_avg(l, u):
+    avg = (l + u) / 2
+    return str(avg)
+
+
+print ("The sum is: " + calc_sum(lower, upper))
+print ("The average is: " + calc_avg(lower, upper))
