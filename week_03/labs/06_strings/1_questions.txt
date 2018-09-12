@@ -32,14 +32,33 @@ first = word[0]
 last = word[len(word) - 1]
 
 
-9 - What are the answers to Exercise 8.4 (p.80) from the textbook?
-def find(word, letter, start_ind):
+9 - What are the answers to Exercise 8.4 (p.96) from the textbook?
+
+    any_lowercase1: The function will return True only if the first character of the string is lowercase because there is an else statement that returns False at the first instance it is not. The for-loop gets exited after the first return statement. This is how I would modify the code to work:
+
+    def any_lowercase1(s):
+    for c in s:
+        if c.islower():
+            return True
+    return False
+
+
+    any_lowercase2: This function will always return True because it is checking is_lower() function on a hard-coded string ('c'), instead of the variable c. Also, it doesn't actually return a boolean, it is returning a string.
+
+    any_lowercase3: This function will return True only if the last character of the string is lowercase because the loop will continue replacing the returned variable until it reaches the last index.
+
+    any_lowercase4: This function works because once the loop reaches a lowercase letter, the flag will become True and regardless of what comes afterward, the result of True or False is always True.
+
+    any_lowercase5: This function only works when the entire string is lowercase because once it finds an uppercase letter the for-loop will return a False value and statement will end.
+
+{# def find(word, letter, start_ind):
     index = start_ind
     while index < len(word):
         if word[index] == letter:
             return index
         index = index + 1
-    return -1
+    return -1 #}
+
 
 10 - Can you change one or more character of a string? Why or why not?
     No, because strings are immutable.
@@ -51,10 +70,32 @@ def find(word, letter, start_ind):
 word = "hello"
 print(word.find("e"))
 
-13 - Complete Exercise 8.5 (p.80) (Caesar cypher) from the textbook.
+13 - Complete Exercise 8.5 (p.96) (Caesar cypher) from the textbook.
+def print_word(word, num):
+    cypher = ""
+    for x in word.lower():
+        step = ord(x) + num
+        if step >= 97 and step <= 122:
+            cypher_single = chr(step)
+        # Check if we are overlapping between z to a because there are other characters in between.
+        elif step < 97:
+            cypher_single = chr(26 + step)
+        else:
+            cypher_single = chr(step - 26)
+        cypher = cypher + cypher_single
+    return cypher
+
+print(print_word("cheer", 7))
 
 
 14 - Follow the directions for Exercise 8.1 (p.79) until you feel comfortable with the string methods and what methods are available.
+
+a = "HELLo LaURA"
+
+print(a.replace("L", "!", 2))
+print(a.isalnum())
+print(a.capitalize())
+print(a.strip("A"))
 
 15 - How is the in operator used?
     It returns a boolean of whether the first string is found in the second string.

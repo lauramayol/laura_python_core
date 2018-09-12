@@ -42,7 +42,7 @@ x = nums
 
 
 while x >= 0:
-    print(format(bottles_on_wall(x) + ", " + bottles(x) + "."))
+    print(bottles_on_wall(x).capitalize() + ", " + bottles(x) + ".")
     x = x - 1
     if x < 0:
         last_line = "Go to the store and buy some more, " + bottles_on_wall(nums)

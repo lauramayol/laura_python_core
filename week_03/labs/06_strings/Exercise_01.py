@@ -1,8 +1,6 @@
 '''
-Complete Exercise 8.2 (p.79) from the textbook.
+Complete Exercise 8.2 (p.95) from the textbook.
 
 '''
-
-
-word = "hello"
-print(word.find("e"))
+word = 'banana'
+print(word.count('a'))

@@ -13,8 +13,17 @@ list_two = [1, 4, 9, 24, 42, 88, 99, 100]
 same_list = list()
 diff_list = list()
 
+# First check all in list_one compared to list_two, ie. left join
 for x in list_one:
     if x in list_two:
-        same_list += x
+        same_list.append(x)
     else:
-        diff_list += x
+        diff_list.append(x)
+
+# Next, check only those that are in list_two, but not in list_one
+for x in list_two:
+    if not x in list_one:
+        diff_list.append(x)
+
+print(same_list)
+print(diff_list)
