@@ -12,13 +12,17 @@
     A function can only return one value, so a tuple allows for you to put two values as part of the return statement.
 
 5 - What are variable-length arguments?
-
+    Passing an undefined number of variables to a function. For example, I can pass two variables the first time I execute a function and the next time I can pass 5 variables as well.
 
 6 - How is gather and scatter used?
+    gather: When a parameter has "*" before the name, its values will be put, or gathered, into a tupple.
+    scatter: When a function is called with "*" before a tupple being passed, its values will be separated into multiple variables.
 
 7 - What does the zip function do?
+    takes two or more sequences and returns a list of tuples
 
 8 - What does the items method do?
+    returns a sequence of tuples, where each tuple is a key-value pair
 
 9 - How are tuples compared when relational operators are used?
-
+    It will compare the items in order of index. If the items in first index are equal, it will check the next index until it finds something it can compare to. The rest of the items are ignored.

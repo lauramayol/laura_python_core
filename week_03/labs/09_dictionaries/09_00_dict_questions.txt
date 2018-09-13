@@ -1,35 +1,53 @@
 1 - What is the difference between a list and a dictionary?
+    While a list's index is an integer, a dictionary's index is dynamic and can be almost any type.
 
 2 - What is a key-value pair?
+    It is a pair of items where one of the items represents the other.
 
 3 - How do you add an item to the dictionary first_dict using square
     brackets?
+    first_dict["my_key"] = "my_value"
 
 4 - How do you add several items to the dictionary first_dict using
     curly braces?
+    first_dict = {"my_key" : "my value", "my_2nd_key" : "my second value" }
 
 5 - When you print out a dictionary, is there a order to the items?
     Why or why not?
+    No, because the computer doesn't store them that way.
 
 6 - How do you print out a value using a key?
+    first_dict["my_2nd_key"]
 
 7 - How does the in operator work with dictionaries?
+    It tells you whether something appears as a key in the dictionary. It ignores the values.
 
 8 - What is an implementation?
+    It is a way of performing a computation.
 
 9 - Write an example for loop to traverse a dictionary loop_dict and
     print out the keys and values.
+loop_dict = {"first": "gold", "second": "silver", "third": "bronze"}
+for a in loop_dict:
+    print(a, loop_dict[a])
 
 10 - How can you find search for a key given a value.
     What is this called?
+    It is called a reverse lookup and you have to do a search. You also have to be careful because the value can be assigned to multiple keys, whereas the keys are unique.
+
 
 11 - Can lists be keys of a dictionary? Why or why not?
+    They cannot because they are not hashable. A hash takes a value and turns it into a integer.
 
 12 - Can lists be values of a dictionary? Why or why not?
+    Yes
 
 13 - What is a global variable?
+    They can be accessed from any function.
 
 14 - How do you reassign a global variable inside of a function?
+    For mutable values, you can just reassign as usual (ie. variable_name = value). But immutable needs to be declared first using the keyword "global".
 
 15 - When do you not need to use the "global" keyword to modify the
     value of a global variable?
+    If the value is mutable.
