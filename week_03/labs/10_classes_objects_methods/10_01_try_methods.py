@@ -18,3 +18,14 @@ Source: Exercise in chapter "Strings" in Think Python 2e:
 http://greenteapress.com/thinkpython2/html/thinkpython2009.html
 
 '''
+
+my_string = "Here is my TEST"
+
+stripped = my_string.strip("TS")
+print(stripped)
+
+replaced = my_string.replace(" ", "_")
+print(replaced)
+
+found = my_string.find(" ")
+print(found)

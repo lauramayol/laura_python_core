@@ -1,12 +1,18 @@
 - What is the difference between class attributes and
     instance attributes?
+    Class attributes are defined for the class whereas instance attributes only exist for the instance you have created.
 
 - What is inheritance?
+    A class that is a modified version of another class
 
 - Why do we use inheritance?
+    Because we can use the same existing code and just buid upon that, not having to repeat ourselves.
 
 - How does a class inherit another class?
+    By assigning an object to the parent class inside of the child class definition.
 
 - What is an example of a parent/child class relationship?
+    From class today, Mammals is parent of Whale object.
 
 - How many levels can a hierarchy extend?
+
