@@ -92,28 +92,27 @@ class Sport():
         return total_time
 
 
-wk1_workout = Workout("swim", "swimsuit")
-wk1_workout.length_mins = 45
-wk2_workout = Workout("crossfit", "weights")
-wk2_workout.length_mins = 60
+# wk1_workout = Workout("swim", "swimsuit")
+# wk1_workout.length_mins = 45
+# wk2_workout = Workout("crossfit", "weights")
+# wk2_workout.length_mins = 60
 
-my_evening_drink = Beverage()
-my_morning_drink = Beverage("coffee", False, True)
+# my_evening_drink = Beverage(True, False)
+# my_morning_drink = Beverage(False, True)
 
-baseball_match = Sport("Baseball", 18, 180)
-baseball_match.gender = "Male"
-tennis_match = Sport("Tennis", 2, 120)
-tennis_match.gender = "Female"
+# baseball_match = Sport("Baseball", 18, 180)
+# baseball_match.gender = "Male"
+# tennis_match = Sport("Tennis", 2, 120)
+# tennis_match.gender = "Female"
 
-print(wk1_workout.__dict__)
-print(wk2_workout)
+# print(wk1_workout.__dict__)
+# print(wk2_workout)
 
-print(f"You will need {(baseball_match.length + tennis_match.length)/60} hours to watch both matches.")
+# print(f"You will need {(baseball_match.length + tennis_match.length)/60} hours to watch both matches.")
 
-my_evening_drink.category = "tea"
-my_evening_drink.has_alcohol = False
-tennis_match.number_of_players = 4
+# my_evening_drink.has_alcohol = False
+# tennis_match.number_of_players = 4
 
 
-my_evening_drink.print_details()
-tennis_match.print_prepare()
+# my_evening_drink.print_details()
+# tennis_match.print_prepare()
