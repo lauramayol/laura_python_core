@@ -25,3 +25,11 @@ office = [
     {"full_name": "Creed Bratton", "item": "mung beans"},
     {"full_name": "Darryl Philbin", "item": "forklift"},
 ]
+
+for key in office:
+    first_name = key["full_name"].split()[0]
+    last_name = key["full_name"].split()[1]
+    item_name = key["item"]
+    pad_length = 25 + len(item_name) - len(key["full_name"])
+    print(f"{last_name.upper()}, {first_name} {item_name: >{pad_length}}")
+    # print(f"{item_name: >{pad_length}}")
