@@ -18,3 +18,40 @@ Source: Read through the "Files" chapter in Think Python 2e:
 http://greenteapress.com/thinkpython2/html/thinkpython2015.html
 
 '''
+import os
+
+file_paths = list()
+
+
+def walk(dirname, ext):
+    for name in os.listdir(dirname):
+        path = os.path.join(dirname, name)
+        if os.path.isfile(path):
+            if ext in path:
+                file_paths.append(path)
+        else:
+            walk(path, ext)
+    return file_paths
+
+
+def file_md5(f1):
+    cmd = "md5 -r " + f1
+    fp = os.popen(cmd)
+    res = fp.read()
+    stat = fp.close()
+    return res.replace(f1, "")
+
+
+def check_files(f1, f2):
+    return file_md5(f1) == file_md5(f2)
+
+
+file_list = walk("/Users/lauramay/Documents/CodingNomads", ".txt")
+matched_list = list()
+x = 1
+for x in range(1, len(file_list)):
+    if check_files(file_list[x], file_list[x - 1]):
+        matched_list.append(file_list[x - 1])
+        matched_list.append(file_list[x])
+
+print(matched_list)

@@ -15,3 +15,27 @@ Source: Read through the "Files" chapter in Think Python 2e:
 http://greenteapress.com/thinkpython2/html/thinkpython2015.html
 
 '''
+
+
+def sed(find_string, replace_with, f1, f2):
+    try:
+        with open(f1, "r") as f:
+            data = f.readlines()
+    except:
+        print(f"Cannot read file {f1}")
+    else:
+        new_data = ""
+        for word in data:
+            new_data += word.replace(find_string, replace_with)
+        write_file(new_data, f2)
+
+
+def write_file(message, fwrite):
+    try:
+        with open(fwrite, "w") as f:
+            f.write(message)
+    except:
+        print(error)
+
+
+sed("e", "!!", "words.txt", "output.txt")

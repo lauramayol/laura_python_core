@@ -15,3 +15,18 @@ Source: Read through the "Files" chapter in Think Python 2e:
 http://greenteapress.com/thinkpython2/html/thinkpython2015.html
 
 '''
+import anagram_sets
+
+
+def store_anagrams(f1):
+    #anagram_dict = dict()
+    anagram_dict = anagram_sets.all_anagrams(f1)
+    return anagram_dict
+
+
+def read_anagrams(word, file_name):
+    d = store_anagrams(file_name)
+    word_key = anagram_sets.signature(word)
+    return d[word_key]
+
+print(read_anagrams("marble", "words.txt"))
