@@ -31,7 +31,7 @@ What do they each do?
     Writing code that is composed of objects and operations that do something with those objects to achieve the desired result.
 
 
-## Methods (page 161)
+## Methods
 
 - What is a method?
     A function associated with a class.
@@ -46,7 +46,7 @@ What do they each do?
     It initializes an object
 
 - Give an example `__init__` method for a `Car` class with attributes:
-`make`, `model` and `year.
+`make`, `model` and `year`.
 
 class Car():
     def __init__(self, make, model, year):
