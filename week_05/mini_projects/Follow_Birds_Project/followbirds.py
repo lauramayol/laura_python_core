@@ -24,29 +24,34 @@ api = tweepy.API(auth)
 user_group = {"Over 1M": list(), "500K to 1M": list(), "50K to 500K": list(), "less than 50K": list()}
 print("We are searching people in Twitter. Please enter what topic you would like to search:")
 user_input = input()
-
-for u in tweepy.Cursor(api.search_users, q=(user_input)).items(400):
+ct = 0
+for u in tweepy.Cursor(api.search_users, q=(user_input)).items(500):
     user_tuple = (u.screen_name, u.followers_count)
-    if u.followers_count > 1000000:
-        user_group["Over 1M"].append(user_tuple)
-    elif u.followers_count >= 500000:
-        user_group["500K to 1M"].append(user_tuple)
-    elif u.followers_count >= 50000:
-        user_group["50K to 500K"].append(user_tuple)
-    else:
-        user_group["less than 50K"].append(user_tuple)
+    ct += 1
+    if user_tuple not in user_group:
+        if u.followers_count > 1000000:
+            user_group["Over 1M"].append(user_tuple)
+        elif u.followers_count >= 500000:
+            user_group["500K to 1M"].append(user_tuple)
+        elif u.followers_count >= 50000:
+            user_group["50K to 500K"].append(user_tuple)
+        else:
+            # elif u.followers_count > 0:
+            user_group["less than 50K"].append(user_tuple)
 
+print(f"Twitter handle | # Followers (Top {ct} records)")
 for key in user_group:
-    print(f"{key} users: ")
-    print(user_group[key])
+    print(f"{key} followers: ")
+    for u in sorted(user_group[key], key=lambda tup: tup[1], reverse=True):
+        print(f"@{u[0]} | {u[1]}")
 
 
-#public_tweets = api.home_timeline()
+# public_tweets = api.home_timeline()
 # for tweet in public_tweets:
 #     print(tweet.text)
 
 # Get the User object for twitter...
-#user = api.get_user('twitter')
+# user = api.get_user('twitter')
 
 # print(user.screen_name)
 # print(user.followers_count)
