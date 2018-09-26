@@ -9,8 +9,8 @@ class MyApp:
     item_str = 'item'
     quantity_str = 'quant'
     confirm_dlt_str = 'confirm_delete'
-    default_quantity = 1
-    exc_status = "400 Bad Request"
+    default_quantity = 0
+    exc_status = '400 Bad Request'
 
     def dispatch(self, environ):
         # Get details of HTTP request
@@ -24,7 +24,13 @@ class MyApp:
         split_query = self.read_query(query)
         # Currently, we only handle requests within inventory path.
         if path == '/inventory':
-            return self.inventory_workflow(method, split_query, item_list)
+            if method == 'GET':
+                inven = self.get_inventory(split_query, item_list)
+                # dumps returns a json formatted string of our inventory.
+                return json.dumps(inven)
+            # Other methods except GET will require query values to be introduced. And item_str must be part of the query.
+            elif self.item_str in split_query:
+                return self.inventory_workflow(method, split_query, item_list)
         return 'Your request is invalid, please try new URL'
 
     def filewriter(self, fileinfo):
@@ -41,7 +47,7 @@ class MyApp:
         '''
             Break up the query into a dictionary. Each individual field being queried becomes a key (separated by & in original)
             --The values for each key are a list, so you can have multiple items queried at once. The corresponding values (ie. quantities), will then be assigned by matching indexes.
-            --While quantity is not required (default is 1), it is all or nothing. If quantity is listed for one item, it must be listed for all of them.
+            --While quantity is not required (default is 0), it is all or nothing. If quantity is listed for one item, it must be listed for all of them.
 
             Example: ?item=socks&quant=2&item=pants&quant=1
             Result: {item : [socks, pants], quant : [2, 1]}
@@ -68,70 +74,69 @@ class MyApp:
         if self.item_str in _dict and self.quantity_str in _dict:
             # Make sure that every item has a quantity spec. Otherwise raise exception.
             if len(_dict[self.item_str]) != len(_dict[self.quantity_str]):
-                raise InventoryException("Your request is invalid. Include quantity for all items, or remove all quantities to use default.", exc_status)
+                raise InventoryException("Your request is invalid. Include quantity for all items, or remove all quantities to use default.", self.exc_status)
         return _dict
 
     def inventory_workflow(self, method, query_dict, data_list):
-        if len(query_dict) == 0:
-            if method == 'GET':
-                # dumps returns a json formatted string of our inventory.
-                inven = json.dumps(data_list)
-                return inven
-        # All other methods will require query values to be introduced.
-        elif len(query_dict) > 0:
-            # Check if the query is requesting "item"
-            if self.item_str in query_dict:
-                # Iterate through the items given in the request query
-                new_data_list = self.iterate_query(method, query_dict, data_list)
-                if method == 'GET':
-                    inven = json.dumps(new_data_list)
-                    return inven
-                else:
-                    post_update = self.filewriter(new_data_list)
-                    return_dict = {"message": post_update, "inventory": new_data_list}
-                    return_message = json.dumps(return_dict)
-                return return_message
+        if method == 'DELETE':
+            new_data_list = self.delete_inventory(query_dict, data_list)
+        else:
+            new_data_list = self.iterate_query(method, query_dict, data_list)
+
+        post_update = self.filewriter(new_data_list)
+        return_dict = {"message": post_update, "inventory": new_data_list}
+        return_message = json.dumps(return_dict)
+        return return_message
 
     def iterate_query(self, method, _dict, _list):
         # Iterate through the items given in the request query
         new_data_list = dict()
         for i, val in enumerate(_dict[self.item_str]):
-            # Can only fully remote items if you "confirm_delete". Also, all items in this DELETE method will be deleted as long as there is one "confirm_delete" = 1 value.
-            if method == 'DELETE':
-                if '1' in _dict[self.confirm_dlt_str]:
-                    del _list[val]
-                else:
-                    raise InventoryException("Your request is invalid. DELETE request should include confirm_delete=1. Please try new URL.", exc_status)
-            elif method == 'GET':
-                new_data_list[val] = _list[val]
             # Assign quantity from split_query dictionary based on index value matching the item location.
-
+            if self.quantity_str in _dict:
+                try:
+                    q = int(_dict[self.quantity_str][i])
+                except:
+                    raise InventoryException(f"Quantity ({self.quantity_str}) expected integer. Instead it recieved {_dict[self.quantity_str][i]}", self.exc_status)
             else:
-                if self.quantity_str in _dict:
-                    try:
-                        q = int(_dict[self.quantity_str][i])
-                    except:
-                        return f"Quantity ({self.quantity_str}) expected integer. Instead it recieved {query_dict[self.quantity_str][i]}"
-                else:
-                    q = self.default_quantity
-                new_data_list = self.change_inventory(method, _list, val, q)
-
-        if method == 'DELETE':
-            new_data_list = _list
+                q = self.default_quantity
+            new_data_list = self.change_inventory(method, _list, val, q)
         return new_data_list
 
     def change_inventory(self, request_type, _dict, item, num):
         '''
         If the request is PATCH or PUT, the "num" amount will be added to quantity. Removing units requires a negative number so it is also "added."
         '''
-        if item in _dict and request_type in ['PATCH', 'PUT']:
+        if item in _dict and request_type == 'PUT':
             _dict[item] += num
         # If the request is "POST", a new item will be created with quantity "num"
-        elif item not in _dict and request_type == 'POST':
+        elif (item not in _dict and request_type == 'POST') or request_type == 'PATCH':
             _dict[item] = num
         else:
-            raise InventoryException("Your request is invalid, please try new URL", exc_status)
+            raise InventoryException("Your request is invalid, please try new URL", self.exc_status)
         return _dict
 
-    def get_inventory(self, request_type):
-        pass
+    def get_inventory(self, query_dict, data_list):
+        new_data_list = dict()
+        if len(query_dict) == 0:
+            new_data_list = data_list
+
+        # All other methods will require query values to be introduced.
+        # Check if the query is requesting "item"
+        elif self.item_str in query_dict:
+            # Iterate through the items given in the request query
+            for i, val in enumerate(query_dict[self.item_str]):
+                if method == 'GET':
+                    new_data_list[val] = data_list[val]
+        return new_data_list
+
+    def delete_inventory(self, query_dict, inventory_list):
+        '''
+        Can only fully remote items if you "confirm_delete". Also, all items in this DELETE method will be deleted as long as "confirm_delete" = 1 is found once.
+        '''
+        for i, val in enumerate(query_dict[self.item_str]):
+            if 'True' in query_dict[self.confirm_dlt_str]:
+                del inventory_list[val]
+            else:
+                raise InventoryException(f"Your request is invalid. DELETE request should include {confirm_dlt_str}=True. Please try new URL.", self.exc_status)
+        return inventory_list

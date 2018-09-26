@@ -1,1 +1,1 @@
-{"underwear": 10, "shoes": 16, "pants": 3, "hats": 10, "socks": 2, "scarves": 10}
+{"underwear": 10, "socks": 4, "hats": 4, "shoes": 16, "pants": 3}
