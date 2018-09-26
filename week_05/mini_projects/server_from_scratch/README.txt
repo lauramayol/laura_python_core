@@ -3,6 +3,18 @@ $Inventory Project
 
 Inventory Project takes API calls to display and modify current inventory.
 
+PATH
+--------
+
+    localhost:8000/inventory
+
+QUERY VARIABLES
+--------
+
+- item: the item name currently in inventory.
+- quant: quantity to be added/removed from inventory. Must be paired with item.
+- confirm_delete: Must be included with DELETE method with value = 1 to confirm you want to remove the item from invenvtory. Must have at least one item specified in query.
+
 GET
 --------
 
