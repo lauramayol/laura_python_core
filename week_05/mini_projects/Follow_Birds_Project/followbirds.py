@@ -26,7 +26,7 @@ print("We are searching people in Twitter. Please enter what topic you would lik
 user_input = input()
 ct = 0
 for u in tweepy.Cursor(api.search_users, q=(user_input)).items(500):
-    user_tuple = (u.screen_name, u.followers_count)
+    user_tuple = (u.screen_name, u.followers_count, u.location.encode('utf8'))
     ct += 1
     if user_tuple not in user_group:
         if u.followers_count > 1000000:
