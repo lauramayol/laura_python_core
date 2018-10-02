@@ -27,7 +27,7 @@ class MyApp:
         if method == 'GET' and path == "/movie":
             return json.dumps(self.movie_locations(query_formatted))
         # Refresh movie data in MySQL database.
-        elif method == 'GET' and path == "/load":
+        elif method == 'POST' and path == "/movie/load":
             return json.dumps(self.my_movie.load_movie_data())
 
         #Any other calls will be invalid.
